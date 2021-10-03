@@ -38,6 +38,14 @@ namespace SpellCombat {
 
         public static Action ExecuteThePlayerActionEvent;
 
+        public static Action ShowMessagePlayerActionEvent;
+
+        public static Action CheckEnemyIsAliveEvent;
+
         public static Action ExecuteTheEnemyActionEvent;
+
+        public static Action WinCombatActionEvent;
+
+        public static Action LoseCombatActionEvent;
     }
 }

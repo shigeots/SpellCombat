@@ -42,12 +42,15 @@ namespace SpellCombat {
         private void ExecuteThePlayerAction() {
             if(_combat.playerActionOfTheTurn == PlayerAction.FireSpell) {
                 PlayerAnimmationAttack();
+                _combat.enemy.TakeDamage(_combat.player.FireSpell, ElementalType.Fire);
             }
             if(_combat.playerActionOfTheTurn == PlayerAction.WaterSpell) {
                 PlayerAnimmationAttack();
+                _combat.enemy.TakeDamage(_combat.player.WaterSpell, ElementalType.Water);
             }
             if(_combat.playerActionOfTheTurn == PlayerAction.GrassSpell) {
                 PlayerAnimmationAttack();
+                _combat.enemy.TakeDamage(_combat.player.GrassSpell, ElementalType.Grass);
             }
             if(_combat.playerActionOfTheTurn == PlayerAction.UseHealthPotion) {
                 _combat.player.RecoveryHealthAndMana(35, 0);
@@ -67,6 +70,16 @@ namespace SpellCombat {
 
             EventObserver.UpdatePlayerStatsHUDEvent();
             EventObserver.UpdateEnemyStatsHUDEvent();
+
+            InvokeShowMessagePlayerActionEvent();
+        }
+
+        private void InvokeShowMessagePlayerActionEvent() {
+            Invoke("CallShowMessagePlayerActionEvent", 2f);
+        }
+
+        private void CallShowMessagePlayerActionEvent() {
+            EventObserver.ShowMessagePlayerActionEvent();
         }
 
         #endregion
@@ -81,7 +94,7 @@ namespace SpellCombat {
         internal void EnemyCharacterAnimmationTakeDamage() {
             _enemyCharacterController.EnemyAnimmationTakeDamage();
         }
-        
+
         #endregion
 
         #region Public methods
