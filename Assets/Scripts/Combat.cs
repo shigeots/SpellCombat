@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SpellCombat {
     
-    public class Combat : MonoBehaviour {
+    public class Combat : MonoBehaviour, ISubscribeMethodsToEvents, IUnsubscribeMethodsToEvents {
 
         #region Internal properties
         [SerializeField] internal int currentTurn = 0;
@@ -19,14 +19,41 @@ namespace SpellCombat {
 
         #region Main methods
         private void Awake() {
-            player = new Player(120, 80, 10, 15, 10, ElementalType.Water);
-            enemy = new Enemy(80, 50, 10, 5, 8, ElementalType.Fire);
-            IncreaseTurn();
-            DefineProbability();
+            SubscribeMethodsToEvents();
+
+            EventObserver.StartCombatPhaseEvent();
         }
+
+        private void Start() {
+            EventObserver.StartTurnPhaseEvent();
+            EventObserver.ShowProbailityTurnEvent();
+        }
+
+        private void OnDestroy() {
+            UnsubscribeMethodsToEvents();
+        }
+
         #endregion
 
         #region Private methods
+
+        public void SubscribeMethodsToEvents() {
+            EventObserver.StartCombatPhaseEvent += SetPlayerAndEnemyData;
+            EventObserver.StartTurnPhaseEvent += IncreaseTurn;
+            EventObserver.StartTurnPhaseEvent += DefineProbability;
+        }
+
+        public void UnsubscribeMethodsToEvents() {
+            EventObserver.StartCombatPhaseEvent -= SetPlayerAndEnemyData;
+            EventObserver.StartTurnPhaseEvent -= IncreaseTurn;
+            EventObserver.StartTurnPhaseEvent -= DefineProbability;
+        }
+
+        private void SetPlayerAndEnemyData() {
+            player = new Player(120, 80, 10, 15, 10, ElementalType.Water);
+            enemy = new Enemy(80, 50, 10, 5, 8, ElementalType.Fire);
+        }
+
         [ContextMenu("IncreaseTurn")]
         private void IncreaseTurn() {
             currentTurn++;

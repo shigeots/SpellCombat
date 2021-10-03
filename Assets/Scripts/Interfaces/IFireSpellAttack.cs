@@ -1,3 +1,4 @@
 public interface IFireSpellAttack {
-    public int FireSpellAttack();
+
+    int FireSpellAttack();
 }
