@@ -8,16 +8,19 @@ namespace SpellCombat
     [Serializable]
     public class Wizard {
 
-        #region Properties
+        #region Attributes
+
         [SerializeField] private int _health;
         [SerializeField] private int _mana;
         [SerializeField] private int _fireSpell;
         [SerializeField] private int _waterSpell;
         [SerializeField] private int _grassSpell;
         [SerializeField] private ElementalType _elementalType;
+
         #endregion
 
         #region Contructors
+
         public Wizard () {
         }
 
@@ -29,9 +32,11 @@ namespace SpellCombat
             _grassSpell = grassSpell;
             _elementalType = elementalType;
         }
+
         #endregion
 
-        #region Getters and Setters
+        #region Getters and setters
+
         public int Health {
             get => _health;
             set => _health = value;
@@ -61,6 +66,7 @@ namespace SpellCombat
             get => _elementalType;
             set => _elementalType = value;
         }
+
         #endregion
     }
 }

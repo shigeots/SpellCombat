@@ -7,10 +7,16 @@ namespace SpellCombat
 {
     public class ProbabilityChangeHUDController : MonoBehaviour, ISubscribeMethodsToEvents, IUnsubscribeMethodsToEvents  {
 
+        #region Private properties
+
         [SerializeField] private Combat _combat;
         [SerializeField] private TextMeshProUGUI _probabilityValueText;
 
         private const string _percentcharacter = "%";
+
+        #endregion
+
+        #region Main methods
 
         private void Awake() {
             SubscribeMethodsToEvents();
@@ -20,18 +26,27 @@ namespace SpellCombat
             UnsubscribeMethodsToEvents();
         }
 
-        public void SubscribeMethodsToEvents() {
-            EventObserver.ShowProbailityTurnEvent += ShowProbabilityText;
-        }
+        #endregion
 
-        public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowProbailityTurnEvent -= ShowProbabilityText;
-        }
-
+        #region Private methods
 
         [ContextMenu("ShowProbaility")]
         private void ShowProbabilityText() {
             _probabilityValueText.SetText(_combat.probabilityToChangeElement.ToString() + _percentcharacter);
         }
+
+        #endregion
+
+        #region Public methods
+
+        public void SubscribeMethodsToEvents() {
+            EventObserver.ShowProbabilityTurnEvent += ShowProbabilityText;
+        }
+
+        public void UnsubscribeMethodsToEvents() {
+            EventObserver.ShowProbabilityTurnEvent -= ShowProbabilityText;
+        }
+
+        #endregion
     }
 }

@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Major
+  m_text: Greater
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 232175223}
   - component: {fileID: 232175222}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DescriptionText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Alter the probability of changing the player's and enemy's mage type.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1400,12 +1400,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 28.388062, y: 0, z: 31.301727, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTurn: 0
   probabilityToChangeElement: 0
-  _turnToWaitToModifyTheProbability: 0
+  turnToWaitToModifyTheProbability: 0
   player:
     _health: 0
     _mana: 0
@@ -1499,7 +1499,8 @@ MonoBehaviour:
   playerBag:
     _healthPotion: 0
     _manaPotion: 0
-    _megaPotion: 0
+    _mixedPotion: 0
+  enemyElementalSpell: 0
 --- !u!4 &334967585
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,6 +1983,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1058618236}
+          m_TargetAssemblyTypeName: SpellCombat.CombatActionHUDController, Assembly-CSharp
+          m_MethodName: OnClickItemButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &406375479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,7 +2066,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406375479}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
@@ -5186,13 +5203,14 @@ GameObject:
   - component: {fileID: 1007925806}
   - component: {fileID: 1007925805}
   - component: {fileID: 1007925804}
+  - component: {fileID: 1007925808}
   m_Layer: 5
-  m_Name: ChangeProbabilityCanvas
+  m_Name: ChangeProbabilityHUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1007925804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5274,6 +5292,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1007925808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007925803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015a114d22be85f4fa8abc379bd25a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 232175222}
+  _combat: {fileID: 334967584}
+  _changeProbabilityHUDCanvas: {fileID: 1007925806}
 --- !u!1 &1012600691
 GameObject:
   m_ObjectHideFlags: 0
@@ -5736,6 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 1574298297}
+  _combatActionHUDCanvas: {fileID: 1058618234}
 --- !u!1 &1072148687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5984,6 +6018,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 933549099}
+  _combat: {fileID: 334967584}
+  _itemOptionHUDCanvas: {fileID: 1105420665}
+  _healthPotionText: {fileID: 168797704}
+  _manaPotionText: {fileID: 1072148689}
+  _mixedPotionText: {fileID: 1015266242}
+  _healthPotionButton: {fileID: 672694855}
+  _manaPotionButton: {fileID: 1276693127}
+  _mixedPotionButton: {fileID: 1997102314}
 --- !u!1 &1128988339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6041,7 +6083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Minor
+  m_text: Less
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6612,8 +6654,9 @@ GameObject:
   - component: {fileID: 1205993195}
   - component: {fileID: 1205993194}
   - component: {fileID: 1205993193}
+  - component: {fileID: 1205993196}
   m_Layer: 5
-  m_Name: MajorButton
+  m_Name: GreaterButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6721,6 +6764,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205993191}
   m_CullTransparentMesh: 1
+--- !u!114 &1205993196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205993191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowGreaterDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowChangeProbabilityDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: OnClickGreaterButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1232385090
 GameObject:
   m_ObjectHideFlags: 0
@@ -7101,6 +7205,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1058618236}
+          m_TargetAssemblyTypeName: SpellCombat.CombatActionHUDController, Assembly-CSharp
+          m_MethodName: OnClickSpellButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1275267692
 GameObject:
   m_ObjectHideFlags: 0
@@ -7259,6 +7379,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1058618236}
           m_TargetAssemblyTypeName: SpellCombat.CombatActionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheActionDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1058618236}
+          m_TargetAssemblyTypeName: SpellCombat.CombatActionHUDController, Assembly-CSharp
+          m_MethodName: OnClickGuardButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9266,6 +9402,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 1787886682}
+  _combat: {fileID: 334967584}
+  _spellOptionHUDCanvas: {fileID: 0}
+  _fireSpellText: {fileID: 1183847110}
+  _waterSpellText: {fileID: 810896438}
+  _grassSpellText: {fileID: 521479470}
 --- !u!1 &1666894197
 GameObject:
   m_ObjectHideFlags: 0
@@ -9945,6 +10086,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1058618236}
+          m_TargetAssemblyTypeName: SpellCombat.CombatActionHUDController, Assembly-CSharp
+          m_MethodName: OnClickRestButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1728377478
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,6 +10615,7 @@ GameObject:
   - component: {fileID: 1870629114}
   - component: {fileID: 1870629113}
   - component: {fileID: 1870629112}
+  - component: {fileID: 1870629115}
   m_Layer: 5
   m_Name: NoChangeButton
   m_TagString: Untagged
@@ -10567,6 +10725,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870629110}
   m_CullTransparentMesh: 1
+--- !u!114 &1870629115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870629110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowNoChangeDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowChangeProbabilityDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: OnClickNoChangeButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1956030171
 GameObject:
   m_ObjectHideFlags: 0
@@ -11148,8 +11367,9 @@ GameObject:
   - component: {fileID: 2077866427}
   - component: {fileID: 2077866426}
   - component: {fileID: 2077866425}
+  - component: {fileID: 2077866428}
   m_Layer: 5
-  m_Name: MinorButton
+  m_Name: LessButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11257,6 +11477,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077866423}
   m_CullTransparentMesh: 1
+--- !u!114 &2077866428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077866423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowLessDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: ShowChangeProbabilityDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1007925808}
+          m_TargetAssemblyTypeName: SpellCombat.ChangeProbabilityHUDController, Assembly-CSharp
+          m_MethodName: OnClickLessButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2128827780
 GameObject:
   m_ObjectHideFlags: 0
