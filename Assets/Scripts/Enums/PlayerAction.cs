@@ -1,6 +1,6 @@
 namespace SpellCombat {
 
     public enum PlayerAction {
-        FireSpell, WaterSpell, GrassSpell, HealthPotion, ManaPotion, MixedPotion, Guard, Rest
+        FireSpell, WaterSpell, GrassSpell, UseHealthPotion, UseManaPotion, UseMixedPotion, Guard, Rest
     }
 }

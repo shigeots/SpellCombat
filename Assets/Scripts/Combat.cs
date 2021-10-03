@@ -108,7 +108,7 @@ namespace SpellCombat {
 
         internal void IncreaseTurnToWaitToModifyTheProbability() {
             if(turnToWaitToModifyTheProbability == 0) {
-                turnToWaitToModifyTheProbability = 3;
+                turnToWaitToModifyTheProbability = 2;
             }
         }
 

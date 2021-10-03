@@ -88,6 +88,42 @@ namespace SpellCombat {
             SetDescription(_backDescription);
         }
 
+        public void OnClickHealthPotionButton() {
+            if(_combat.playerBag.HealthPotion > 0) {
+                _combat.DefinePlayerAction(PlayerAction.UseHealthPotion);
+                _combat.playerBag.ReduceHealthPotion();
+                HideItemOptionHUDCanvas();
+            } else {
+                Debug.Log("No hay pocion");
+            }
+            
+        }
+
+        public void OnClickManaPotionButton() {
+            if(_combat.playerBag.ManaPotion > 0) {
+                _combat.DefinePlayerAction(PlayerAction.UseManaPotion);
+                _combat.playerBag.ReduceManaPotion();
+                HideItemOptionHUDCanvas();
+            } else {
+                Debug.Log("No hay pocion");
+            }
+        }
+
+        public void OnClickMixedPotionButton() {
+            if(_combat.playerBag.MixedPotion > 0) {
+                _combat.DefinePlayerAction(PlayerAction.UseMixedPotion);
+                _combat.playerBag.ReduceMixedPotion();
+                HideItemOptionHUDCanvas();
+            } else {
+                Debug.Log("No hay pocion");
+            }
+        }
+
+        public void OnClickBackButton() {
+            HideItemOptionHUDCanvas();
+            EventObserver.ShowCombatActionHUDEvent();
+        }
+
         #endregion
     }
 }

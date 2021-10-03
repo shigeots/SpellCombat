@@ -39,6 +39,7 @@ namespace SpellCombat {
                 _changeProbabilityHUDCanvas.enabled = true;
             } else {
                 HideChangeProbabilityHUDCanvas();
+                EventObserver.ShowCombatActionHUDEvent();
             }
         }
 
@@ -79,6 +80,7 @@ namespace SpellCombat {
                 _combat.ChangeTheProbabilityToGreater();
                 _combat.IncreaseTurnToWaitToModifyTheProbability();
                 HideChangeProbabilityHUDCanvas();
+                EventObserver.UpdateProbabilityTurnEvent();
                 EventObserver.ShowCombatActionHUDEvent();
             }
         }
@@ -88,6 +90,7 @@ namespace SpellCombat {
                 _combat.ChangeTheProbabilityToLess();
                 _combat.IncreaseTurnToWaitToModifyTheProbability();
                 HideChangeProbabilityHUDCanvas();
+                EventObserver.UpdateProbabilityTurnEvent();
                 EventObserver.ShowCombatActionHUDEvent();
             }
         }

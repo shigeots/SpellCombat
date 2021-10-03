@@ -9,6 +9,7 @@ namespace SpellCombat {
 
         #region Private properties
 
+        [SerializeField] private Combat _combat;
         [SerializeField] private Canvas _guardConfirmHUDCanvas;
 
         private const string _confirmGuardDescription = "Confirm guard.";
@@ -61,6 +62,16 @@ namespace SpellCombat {
 
         public void ShowNoDescription() {
             SetDescription(_noDescription);
+        }
+
+        public void OnClickYesButton() {
+            _combat.DefinePlayerAction(PlayerAction.Guard);
+            HideGuardConfirmHUDCanvas();
+        }
+
+        public void OnClickNoButton() {
+            HideGuardConfirmHUDCanvas();
+            EventObserver.ShowCombatActionHUDEvent();
         }
 
         #endregion

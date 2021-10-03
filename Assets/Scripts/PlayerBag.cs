@@ -47,5 +47,21 @@ namespace SpellCombat
         }
 
         #endregion
+
+        #region Internal methods
+
+        internal void ReduceHealthPotion() {
+            _healthPotion--;
+        }
+
+        internal void ReduceManaPotion() {
+            _manaPotion--;
+        }
+
+        internal void ReduceMixedPotion() {
+            _mixedPotion--;
+        }
+
+        #endregion
     }
 }

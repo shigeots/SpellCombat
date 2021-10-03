@@ -11,6 +11,10 @@ namespace SpellCombat {
         public static Action StartTurnPhaseEvent;
 
         public static Action ShowProbabilityTurnEvent;
+
+        public static Action UpdateProbabilityTurnEvent;
+
+        public static Action UpdatePlayerStatsHUDEvent;
     
         public static Action ShowChangeProbabilityHUDEvent;
 

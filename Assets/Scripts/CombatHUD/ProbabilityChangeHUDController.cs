@@ -41,10 +41,12 @@ namespace SpellCombat
 
         public void SubscribeMethodsToEvents() {
             EventObserver.ShowProbabilityTurnEvent += ShowProbabilityText;
+            EventObserver.UpdateProbabilityTurnEvent += ShowProbabilityText;
         }
 
         public void UnsubscribeMethodsToEvents() {
             EventObserver.ShowProbabilityTurnEvent -= ShowProbabilityText;
+            EventObserver.UpdateProbabilityTurnEvent -= ShowProbabilityText;
         }
 
         #endregion

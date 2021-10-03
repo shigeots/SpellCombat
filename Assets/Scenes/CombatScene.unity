@@ -682,6 +682,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663477225}
+          m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickFireSpellButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &130155625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,10 +1513,11 @@ MonoBehaviour:
     _grassSpell: 0
     _elementalType: 0
   playerBag:
-    _healthPotion: 0
-    _manaPotion: 0
+    _healthPotion: 2
+    _manaPotion: 1
     _mixedPotion: 0
   enemyElementalSpell: 0
+  playerActionOfTheTurn: 0
 --- !u!4 &334967585
 Transform:
   m_ObjectHideFlags: 0
@@ -1673,6 +1690,22 @@ MonoBehaviour:
         - m_Target: {fileID: 533119832}
           m_TargetAssemblyTypeName: SpellCombat.GuardConfirmHUDController, Assembly-CSharp
           m_MethodName: ShowConfirmGuardDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 533119832}
+          m_TargetAssemblyTypeName: SpellCombat.GuardConfirmHUDController, Assembly-CSharp
+          m_MethodName: OnClickNoButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2113,6 +2146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 1469423368}
+  _combat: {fileID: 334967584}
+  _restConfirmHUDCanvas: {fileID: 406375482}
 --- !u!1 &446490785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2306,22 @@ MonoBehaviour:
         - m_Target: {fileID: 406375484}
           m_TargetAssemblyTypeName: SpellCombat.RestConfirmHUDController, Assembly-CSharp
           m_MethodName: ShowConfirmRestDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 406375484}
+          m_TargetAssemblyTypeName: SpellCombat.RestConfirmHUDController, Assembly-CSharp
+          m_MethodName: OnClickNoButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2905,6 +2956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 91443531}
+  _combat: {fileID: 334967584}
+  _guardConfirmHUDCanvas: {fileID: 533119830}
 --- !u!1 &541430936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3116,22 @@ MonoBehaviour:
         - m_Target: {fileID: 406375484}
           m_TargetAssemblyTypeName: SpellCombat.RestConfirmHUDController, Assembly-CSharp
           m_MethodName: ShowConfirmRestDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 406375484}
+          m_TargetAssemblyTypeName: SpellCombat.RestConfirmHUDController, Assembly-CSharp
+          m_MethodName: OnClickYesButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3554,6 +3623,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663477225}
+          m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickWaterSpellButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &641529992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +3931,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1105420667}
           m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheItemDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105420667}
+          m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickHealthPotionButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4299,6 +4400,22 @@ MonoBehaviour:
         - m_Target: {fileID: 533119832}
           m_TargetAssemblyTypeName: SpellCombat.GuardConfirmHUDController, Assembly-CSharp
           m_MethodName: ShowConfirmGuardDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 533119832}
+          m_TargetAssemblyTypeName: SpellCombat.GuardConfirmHUDController, Assembly-CSharp
+          m_MethodName: OnClickYesButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4810,6 +4927,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1663477225}
           m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheSpellDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663477225}
+          m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickGrassSpellButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7571,6 +7704,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105420667}
+          m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickManaPotionButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1290128236
 GameObject:
   m_ObjectHideFlags: 0
@@ -8341,6 +8490,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1663477225}
           m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheSpellDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663477225}
+          m_TargetAssemblyTypeName: SpellCombat.SpellOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickBackButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9403,7 +9568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _descriptionText: {fileID: 1787886682}
   _combat: {fileID: 334967584}
-  _spellOptionHUDCanvas: {fileID: 0}
+  _spellOptionHUDCanvas: {fileID: 1663477223}
   _fireSpellText: {fileID: 1183847110}
   _waterSpellText: {fileID: 810896438}
   _grassSpellText: {fileID: 521479470}
@@ -9699,6 +9864,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1105420667}
           m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheItemDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105420667}
+          m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickBackButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11212,6 +11393,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1105420667}
           m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
           m_MethodName: ShowSelectTheItemDescription
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105420667}
+          m_TargetAssemblyTypeName: SpellCombat.ItemOptionHUDController, Assembly-CSharp
+          m_MethodName: OnClickMixedPotionButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

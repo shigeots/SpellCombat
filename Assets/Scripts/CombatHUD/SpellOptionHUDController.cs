@@ -100,6 +100,77 @@ namespace SpellCombat {
             SetDescription(_backDescription);
         }
 
+        public void OnClickFireSpellButton() {
+
+            if(_combat.player.ElementalType == ElementalType.Fire && _combat.player.Mana < 6) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType != ElementalType.Fire && _combat.player.Mana < 12) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType == ElementalType.Fire && _combat.player.Mana >= 6) {
+                _combat.DefinePlayerAction(PlayerAction.FireSpell);
+                _combat.player.ReduceMana(6);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+            if(_combat.player.ElementalType != ElementalType.Fire && _combat.player.Mana >= 12) {
+                _combat.DefinePlayerAction(PlayerAction.FireSpell);
+                _combat.player.ReduceMana(12);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+        }
+
+        public void OnClickWaterSpellButton() {
+
+            if(_combat.player.ElementalType == ElementalType.Water && _combat.player.Mana < 6) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType != ElementalType.Water && _combat.player.Mana < 12) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType == ElementalType.Water && _combat.player.Mana >= 6) {
+                _combat.DefinePlayerAction(PlayerAction.WaterSpell);
+                _combat.player.ReduceMana(6);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+            if(_combat.player.ElementalType != ElementalType.Water && _combat.player.Mana >= 12) {
+                _combat.DefinePlayerAction(PlayerAction.WaterSpell);
+                _combat.player.ReduceMana(12);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+        }
+
+        public void OnClickGrassSpellButton() {
+            
+            if(_combat.player.ElementalType == ElementalType.Grass && _combat.player.Mana < 6) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType != ElementalType.Grass && _combat.player.Mana < 12) {
+                Debug.Log("No alcanza");
+            }
+            if(_combat.player.ElementalType == ElementalType.Grass && _combat.player.Mana >= 6) {
+                _combat.DefinePlayerAction(PlayerAction.GrassSpell);
+                _combat.player.ReduceMana(6);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+            if(_combat.player.ElementalType != ElementalType.Grass && _combat.player.Mana >= 12) {
+                _combat.DefinePlayerAction(PlayerAction.GrassSpell);
+                _combat.player.ReduceMana(12);
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                HideSpellOptionHUDCanvas();
+            }
+        }
+
+        public void OnClickBackButton() {
+            HideSpellOptionHUDCanvas();
+            EventObserver.ShowCombatActionHUDEvent();
+        }
+
         #endregion
     }
 }

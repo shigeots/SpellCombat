@@ -19,8 +19,20 @@ namespace SpellCombat
         
         #endregion
 
+        #region Internal methods
+
+        internal void ReduceMana(int mana) {
+            Mana -= mana;
+        }
+
+        #endregion
+
+        #region Public methods
+
         public int FireSpellAttack() {
             return 1;
         }
+
+        #endregion
     }
 }
