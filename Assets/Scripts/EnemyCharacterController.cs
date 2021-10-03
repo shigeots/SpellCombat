@@ -59,7 +59,7 @@ namespace SpellCombat {
         }
 
         private void InvokeShowMessageEnemyActionEvent() {
-            Invoke("CallShowMessageEnemyActionEvent", 2f);
+            Invoke("CallShowMessageEnemyActionEvent", 3f);
         }
 
         private void CallShowMessageEnemyActionEvent() {

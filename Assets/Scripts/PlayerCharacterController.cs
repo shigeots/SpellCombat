@@ -75,7 +75,7 @@ namespace SpellCombat {
         }
 
         private void InvokeShowMessagePlayerActionEvent() {
-            Invoke("CallShowMessagePlayerActionEvent", 2f);
+            Invoke("CallShowMessagePlayerActionEvent", 3f);
         }
 
         private void CallShowMessagePlayerActionEvent() {

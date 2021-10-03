@@ -48,13 +48,22 @@ namespace SpellCombat {
 
         private void ShowMessagePlayerAction() {
 
-            if(_combat.playerActionOfTheTurn == PlayerAction.FireSpell) {
+            if(_combat.playerActionOfTheTurn == PlayerAction.FireSpell && _combat.enemy.ElementalType == ElementalType.Grass) {
+                _messageText.text = "Effective fire spell.";
+            }
+            if(_combat.playerActionOfTheTurn == PlayerAction.WaterSpell && _combat.enemy.ElementalType == ElementalType.Fire) {
+                _messageText.text = "Effective water spell.";
+            }
+            if(_combat.playerActionOfTheTurn == PlayerAction.GrassSpell && _combat.enemy.ElementalType == ElementalType.Water) {
+                _messageText.text = "Effective grass spell.";
+            }
+            if(_combat.playerActionOfTheTurn == PlayerAction.FireSpell && _combat.enemy.ElementalType != ElementalType.Grass) {
                 _messageText.text = "Damaged enemy with fire spell.";
             }
-            if(_combat.playerActionOfTheTurn == PlayerAction.WaterSpell) {
+            if(_combat.playerActionOfTheTurn == PlayerAction.WaterSpell && _combat.enemy.ElementalType != ElementalType.Fire) {
                 _messageText.text = "Damaged enemy with water spell.";
             }
-            if(_combat.playerActionOfTheTurn == PlayerAction.GrassSpell) {
+            if(_combat.playerActionOfTheTurn == PlayerAction.GrassSpell && _combat.enemy.ElementalType != ElementalType.Water) {
                 _messageText.text = "Damaged enemy with grass spell.";
             }
             if(_combat.playerActionOfTheTurn == PlayerAction.UseHealthPotion) {
@@ -79,7 +88,7 @@ namespace SpellCombat {
         }
 
         private void InvokeCheckEnemyIsAliveEvent() {
-            Invoke("CallCheckEnemyIsAliveEvent", 2f);
+            Invoke("CallCheckEnemyIsAliveEvent", 2.5f);
         }
 
         private void CallCheckEnemyIsAliveEvent() {
@@ -124,7 +133,7 @@ namespace SpellCombat {
         }
 
         private void InvokeCheckPlayerIsAliveEvent() {
-            Invoke("CallCheckPlayerIsAliveEvent", 2f);
+            Invoke("CallCheckPlayerIsAliveEvent", 2.5f);
         }
 
         private void CallCheckPlayerIsAliveEvent() {
