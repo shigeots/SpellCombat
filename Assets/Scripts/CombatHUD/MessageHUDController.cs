@@ -93,7 +93,7 @@ namespace SpellCombat {
                 _messageHUDCanvas.enabled = true;
                 InvokeWinCombatActionEvent();
             } else {
-                
+                EventObserver.ExecuteTheEnemyActionEvent();
             }
         }
 
@@ -105,6 +105,53 @@ namespace SpellCombat {
             EventObserver.WinCombatActionEvent();
         }
 
+        private void ShowMessageEnemyAction() {
+
+            if(_combat.enemyElementalSpell == ElementalType.Fire) {
+                _messageText.text = "You took damage from a fire spell.";
+            }
+            if(_combat.enemyElementalSpell == ElementalType.Water) {
+                _messageText.text = "You took damage from a water spell.";
+            }
+            if(_combat.enemyElementalSpell == ElementalType.Grass) {
+                _messageText.text = "You took damage from a grass spell.";
+            }
+
+            _messageHUDCanvas.enabled = true;
+
+            InvokeCheckPlayerIsAliveEvent();
+            
+        }
+
+        private void InvokeCheckPlayerIsAliveEvent() {
+            Invoke("CallCheckPlayerIsAliveEvent", 2f);
+        }
+
+        private void CallCheckPlayerIsAliveEvent() {
+            EventObserver.CheckPlayerIsAliveEvent();
+        }
+
+        private void ShowMessageCheckPlayerIsAlive() {
+
+            if(_combat.player.Health <= 0) {
+                _messageText.text = "You have died.";
+                _messageHUDCanvas.enabled = true;
+                InvokeLoseCombatActionEvent();
+            } else {
+                HideMessageHUDCanvas();
+                EventObserver.StartTurnPhaseEvent();
+                EventObserver.ShowProbabilityTurnEvent();
+            }
+        }
+
+        private void InvokeLoseCombatActionEvent() {
+            Invoke("CallLoseCombatActionEvent", 2f);
+        }
+
+        private void CallLoseCombatActionEvent() {
+            EventObserver.LoseCombatActionEvent();
+        }
+
         #endregion
 
         #region Public methods
@@ -114,7 +161,10 @@ namespace SpellCombat {
             EventObserver.NoChangeWizardElementalTypeEvent += ShowMessageNoChangeWizardElementalType;
             EventObserver.ShowMessagePlayerActionEvent += ShowMessagePlayerAction;
             EventObserver.CheckEnemyIsAliveEvent += ShowMessageCheckEnemyIsAlive;
-            EventObserver.WinCombatActionEvent += InvokeWinCombatActionEvent;
+            //EventObserver.WinCombatActionEvent += InvokeWinCombatActionEvent;
+            EventObserver.CheckPlayerIsAliveEvent += ShowMessageCheckPlayerIsAlive;
+            EventObserver.ShowMessageEnemyActionEvent += ShowMessageEnemyAction;
+            //EventObserver.LoseCombatActionEvent += InvokeLoseCombatActionEvent;
         }
 
         public void UnsubscribeMethodsToEvents() {
@@ -122,8 +172,10 @@ namespace SpellCombat {
             EventObserver.NoChangeWizardElementalTypeEvent -= ShowMessageNoChangeWizardElementalType;
             EventObserver.ShowMessagePlayerActionEvent -= ShowMessagePlayerAction;
             EventObserver.CheckEnemyIsAliveEvent -= ShowMessageCheckEnemyIsAlive;
-            EventObserver.WinCombatActionEvent -= InvokeWinCombatActionEvent;
-
+            //EventObserver.WinCombatActionEvent -= InvokeWinCombatActionEvent;
+            EventObserver.CheckPlayerIsAliveEvent -= ShowMessageCheckPlayerIsAlive;
+            EventObserver.ShowMessageEnemyActionEvent -= ShowMessageEnemyAction;
+            //EventObserver.LoseCombatActionEvent -= InvokeLoseCombatActionEvent;
         }
 
         #endregion

@@ -71,7 +71,7 @@ namespace SpellCombat
 
         #region Protected methods
 
-        internal void TakeDamage(int damage, ElementalType damageElementalType) {
+        internal virtual void TakeDamage(int damage, ElementalType damageElementalType) {
             if(damageElementalType == ElementalType.Fire && ElementalType == ElementalType.Grass) {
                 Health -= (damage * 2);
                 return;

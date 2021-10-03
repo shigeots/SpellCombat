@@ -41,6 +41,28 @@ namespace SpellCombat
             _playerOnGuard = true;
         }
 
+        internal override void TakeDamage(int damage, ElementalType damageElementalType) {
+            if(_playerOnGuard == true) {
+                Health -= (damage - 10);
+                return;
+            }
+            if(damageElementalType == ElementalType.Fire && ElementalType == ElementalType.Grass) {
+                Health -= (damage * 2);
+                return;
+            }
+            if(damageElementalType == ElementalType.Water && ElementalType == ElementalType.Fire) {
+                Health -= (damage * 2);
+                return;
+            }
+            if(damageElementalType == ElementalType.Grass && ElementalType == ElementalType.Water) {
+                Health -= (damage * 2);
+                return;
+            }
+
+            Health -= damage;
+            return;
+        }
+
         #endregion
 
         #region Public methods

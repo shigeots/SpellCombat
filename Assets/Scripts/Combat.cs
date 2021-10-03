@@ -43,17 +43,6 @@ namespace SpellCombat {
 
         #region Private methods
 
-        /*
-        public void StartGamePhase() {
-            SetPlayerAndEnemyData();
-            
-        }
-
-        public void StartTurnPhase() {
-            IncreaseTurn();
-            DefineProbability();
-        }*/
-
         private void SetPlayerAndEnemyData() {
             player = new Player(120, 80, 10, 15, 10, RandomElementalType(), false);
             enemy = new Enemy(80, 50, 10, 5, 8, RandomElementalType());
@@ -77,8 +66,6 @@ namespace SpellCombat {
         private void ChooseTheElementEnemySpell() {
             if(probabilityToChangeElement <= 50) {
 
-                Debug.Log("Debilidad");
-
                 if(player.ElementalType == ElementalType.Fire) {
                     enemyElementalSpell = ElementalType.Water;
                 }
@@ -89,7 +76,6 @@ namespace SpellCombat {
                     enemyElementalSpell = ElementalType.Fire;
                 }
             } else {
-                Debug.Log("random");
                 enemyElementalSpell = RandomElementalType();
             }
 
@@ -167,6 +153,7 @@ namespace SpellCombat {
         public void SubscribeMethodsToEvents() {
             EventObserver.StartCombatPhaseEvent += SetPlayerAndEnemyData;
             EventObserver.StartTurnPhaseEvent += IncreaseTurn;
+            EventObserver.StartTurnPhaseEvent += DecreaseTurnToWaitToModifyTheProbability;
             EventObserver.StartTurnPhaseEvent += DefineProbability;
             EventObserver.ShowProbabilityTurnEvent += ChooseTheElementEnemySpell;
             EventObserver.VerifyChangeWizardElementEvent += ChangeWizardElementalType;
@@ -175,6 +162,7 @@ namespace SpellCombat {
         public void UnsubscribeMethodsToEvents() {
             EventObserver.StartCombatPhaseEvent -= SetPlayerAndEnemyData;
             EventObserver.StartTurnPhaseEvent -= IncreaseTurn;
+            EventObserver.StartTurnPhaseEvent -= DecreaseTurnToWaitToModifyTheProbability;
             EventObserver.StartTurnPhaseEvent -= DefineProbability;
             EventObserver.ShowProbabilityTurnEvent -= ChooseTheElementEnemySpell;
             EventObserver.VerifyChangeWizardElementEvent -= ChangeWizardElementalType;

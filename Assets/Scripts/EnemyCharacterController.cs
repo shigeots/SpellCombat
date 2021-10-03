@@ -39,6 +39,33 @@ namespace SpellCombat {
             _enemyAnimator.SetTrigger("Attack");
         }
 
+        private void ExecuteTheEnemyAction() {
+            if(_combat.enemyElementalSpell == ElementalType.Fire) {
+                EnemyAnimmationAttack();
+                _combat.player.TakeDamage(_combat.enemy.FireSpell, ElementalType.Fire);
+            }
+            if(_combat.enemyElementalSpell == ElementalType.Water) {
+                EnemyAnimmationAttack();
+                _combat.player.TakeDamage(_combat.enemy.WaterSpell, ElementalType.Water);
+            }
+            if(_combat.enemyElementalSpell == ElementalType.Grass) {
+                EnemyAnimmationAttack();
+                _combat.player.TakeDamage(_combat.enemy.GrassSpell, ElementalType.Grass);
+            }
+
+            EventObserver.UpdatePlayerStatsHUDEvent();
+
+            InvokeShowMessageEnemyActionEvent();
+        }
+
+        private void InvokeShowMessageEnemyActionEvent() {
+            Invoke("CallShowMessageEnemyActionEvent", 2f);
+        }
+
+        private void CallShowMessageEnemyActionEvent() {
+            EventObserver.ShowMessageEnemyActionEvent();
+        }
+
         #endregion
 
         #region Internal methods
@@ -57,11 +84,11 @@ namespace SpellCombat {
         #region Public methods
 
         public void SubscribeMethodsToEvents() {
-            
+            EventObserver.ExecuteTheEnemyActionEvent += ExecuteTheEnemyAction;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            
+            EventObserver.ExecuteTheEnemyActionEvent -= ExecuteTheEnemyAction;
         }
 
         #endregion
