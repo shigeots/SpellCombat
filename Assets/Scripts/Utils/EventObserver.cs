@@ -15,6 +15,8 @@ namespace SpellCombat {
         public static Action UpdateProbabilityTurnEvent;
 
         public static Action UpdatePlayerStatsHUDEvent;
+
+        public static Action UpdateEnemyStatsHUDEvent;
     
         public static Action ShowChangeProbabilityHUDEvent;
 
@@ -27,5 +29,15 @@ namespace SpellCombat {
         public static Action ShowGuardConfirmHUDEvent;
 
         public static Action ShowRestConfirmHUDEvent;
+
+        public static Action VerifyChangeWizardElementEvent;
+
+        public static Action ChangeWizardElementalTypeEvent;
+
+        public static Action NoChangeWizardElementalTypeEvent;
+
+        public static Action ExecuteThePlayerActionEvent;
+
+        public static Action ExecuteTheEnemyActionEvent;
     }
 }

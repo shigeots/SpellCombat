@@ -55,7 +55,7 @@ namespace SpellCombat {
         }*/
 
         private void SetPlayerAndEnemyData() {
-            player = new Player(120, 80, 10, 15, 10, RandomElementalType());
+            player = new Player(120, 80, 10, 15, 10, RandomElementalType(), false);
             enemy = new Enemy(80, 50, 10, 5, 8, RandomElementalType());
         }
 
@@ -102,6 +102,38 @@ namespace SpellCombat {
             int index = UnityEngine.Random.Range(0, values.Length);
             return (ElementalType)values.GetValue(index);
         }
+
+        private ElementalType RandomElementalTypeWithoutRepeating(ElementalType elementalType) {
+
+            int index = 0; 
+            ElementalType randomElementalType;
+
+            Type type = typeof(ElementalType);
+            Array values = type.GetEnumValues();
+            
+            do {
+                index = UnityEngine.Random.Range(0, values.Length);
+                randomElementalType = (ElementalType)values.GetValue(index);
+            }
+            while(randomElementalType == elementalType);
+
+            return randomElementalType;
+        }
+
+        internal void ChangeWizardElementalType() {
+            int randomChance = UnityEngine.Random.Range(0, 101);
+
+            if(randomChance <= probabilityToChangeElement) {
+                player.ElementalType = RandomElementalTypeWithoutRepeating(player.ElementalType);
+                enemy.ElementalType = RandomElementalTypeWithoutRepeating(enemy.ElementalType);
+
+                EventObserver.UpdatePlayerStatsHUDEvent();
+                EventObserver.UpdateEnemyStatsHUDEvent();
+                EventObserver.ChangeWizardElementalTypeEvent();
+            } else {
+                EventObserver.NoChangeWizardElementalTypeEvent();
+            }
+        }
         #endregion
 
         #region Internal methods
@@ -137,6 +169,7 @@ namespace SpellCombat {
             EventObserver.StartTurnPhaseEvent += IncreaseTurn;
             EventObserver.StartTurnPhaseEvent += DefineProbability;
             EventObserver.ShowProbabilityTurnEvent += ChooseTheElementEnemySpell;
+            EventObserver.VerifyChangeWizardElementEvent += ChangeWizardElementalType;
         }
 
         public void UnsubscribeMethodsToEvents() {
@@ -144,6 +177,7 @@ namespace SpellCombat {
             EventObserver.StartTurnPhaseEvent -= IncreaseTurn;
             EventObserver.StartTurnPhaseEvent -= DefineProbability;
             EventObserver.ShowProbabilityTurnEvent -= ChooseTheElementEnemySpell;
+            EventObserver.VerifyChangeWizardElementEvent -= ChangeWizardElementalType;
         }
 
         #endregion

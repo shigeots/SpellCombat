@@ -67,6 +67,7 @@ namespace SpellCombat {
         public void OnClickYesButton() {
             _combat.DefinePlayerAction(PlayerAction.Guard);
             HideGuardConfirmHUDCanvas();
+            EventObserver.VerifyChangeWizardElementEvent();
         }
 
         public void OnClickNoButton() {

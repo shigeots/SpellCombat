@@ -93,6 +93,7 @@ namespace SpellCombat {
                 _combat.DefinePlayerAction(PlayerAction.UseHealthPotion);
                 _combat.playerBag.ReduceHealthPotion();
                 HideItemOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             } else {
                 Debug.Log("No hay pocion");
             }
@@ -104,6 +105,7 @@ namespace SpellCombat {
                 _combat.DefinePlayerAction(PlayerAction.UseManaPotion);
                 _combat.playerBag.ReduceManaPotion();
                 HideItemOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             } else {
                 Debug.Log("No hay pocion");
             }
@@ -114,6 +116,7 @@ namespace SpellCombat {
                 _combat.DefinePlayerAction(PlayerAction.UseMixedPotion);
                 _combat.playerBag.ReduceMixedPotion();
                 HideItemOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             } else {
                 Debug.Log("No hay pocion");
             }

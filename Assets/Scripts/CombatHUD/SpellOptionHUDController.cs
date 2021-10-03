@@ -113,12 +113,14 @@ namespace SpellCombat {
                 _combat.player.ReduceMana(6);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
             if(_combat.player.ElementalType != ElementalType.Fire && _combat.player.Mana >= 12) {
                 _combat.DefinePlayerAction(PlayerAction.FireSpell);
                 _combat.player.ReduceMana(12);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
         }
 
@@ -135,12 +137,14 @@ namespace SpellCombat {
                 _combat.player.ReduceMana(6);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
             if(_combat.player.ElementalType != ElementalType.Water && _combat.player.Mana >= 12) {
                 _combat.DefinePlayerAction(PlayerAction.WaterSpell);
                 _combat.player.ReduceMana(12);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
         }
 
@@ -157,12 +161,14 @@ namespace SpellCombat {
                 _combat.player.ReduceMana(6);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
             if(_combat.player.ElementalType != ElementalType.Grass && _combat.player.Mana >= 12) {
                 _combat.DefinePlayerAction(PlayerAction.GrassSpell);
                 _combat.player.ReduceMana(12);
                 EventObserver.UpdatePlayerStatsHUDEvent();
                 HideSpellOptionHUDCanvas();
+                EventObserver.VerifyChangeWizardElementEvent();
             }
         }
 

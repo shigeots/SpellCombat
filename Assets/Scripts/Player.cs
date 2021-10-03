@@ -8,13 +8,20 @@ namespace SpellCombat
     [Serializable]
     public class Player : Wizard, IFireSpellAttack {
 
+        #region Atributes
+
+        [SerializeField] private bool _playerOnGuard;
+
+        #endregion
+
         #region Contructors
 
         public Player() : base() {
         }
         
-        public Player (int health, int mana, int fireSpell, int waterSpell, int grassSpell, ElementalType elementalType) 
+        public Player (int health, int mana, int fireSpell, int waterSpell, int grassSpell, ElementalType elementalType, bool playerOnGuard) 
             : base(health, mana, fireSpell, waterSpell, grassSpell, elementalType) {
+                _playerOnGuard = playerOnGuard;
         }
         
         #endregion
@@ -23,6 +30,15 @@ namespace SpellCombat
 
         internal void ReduceMana(int mana) {
             Mana -= mana;
+        }
+
+        internal void RecoveryHealthAndMana(int healthToRecover, int manaToRecover) {
+            Health += healthToRecover;
+            Mana += manaToRecover;
+        }
+
+        internal void ChangeTruePlayerOnGuard() {
+            _playerOnGuard = true;
         }
 
         #endregion
