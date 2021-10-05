@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SpellCombat {
 
@@ -40,6 +41,10 @@ namespace SpellCombat {
 
         public void UnsubscribeMethodsToEvents() {
             EventObserver.WinCombatActionEvent -= ShowWinScreenCanvas;
+        }
+
+        public void LoadMenuScene() {
+            SceneManager.LoadScene("MenuScene");
         }
 
         #endregion

@@ -9,9 +9,13 @@ namespace SpellCombat {
         #region Private properties
 
         [SerializeField] private Animator _playerAnimator;
+        [SerializeField] private AudioSource _playerAudioSource;
+        [SerializeField] private AudioClip _damageAudioClip;
+        [SerializeField] private AudioClip _hitAudioClip;
 
         [SerializeField] private EnemyCharacterController _enemyCharacterController;
         [SerializeField] private Combat _combat;
+        
 
         #endregion
 
@@ -93,6 +97,18 @@ namespace SpellCombat {
 
         internal void EnemyCharacterAnimmationTakeDamage() {
             _enemyCharacterController.EnemyAnimmationTakeDamage();
+        }
+
+        internal void PlayDamageAudioClip() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.clip = _damageAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        internal void PlayHitAudioClip() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.clip = _hitAudioClip;
+            _playerAudioSource.Play();
         }
 
         #endregion

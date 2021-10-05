@@ -27,7 +27,7 @@ namespace SpellCombat {
         private void Awake() {
             SubscribeMethodsToEvents();
 
-            EventObserver.StartCombatPhaseEvent();
+            //EventObserver.StartCombatPhaseEvent();
         }
 
         private void Start() {
@@ -44,8 +44,8 @@ namespace SpellCombat {
         #region Private methods
 
         private void SetPlayerAndEnemyData() {
-            player = new Player(120, 80, 10, 15, 10, RandomElementalType(), false);
-            enemy = new Enemy(80, 50, 10, 5, 8, RandomElementalType());
+            player = new Player(100, 80, 11, 15, 10, RandomElementalType(), false);
+            enemy = new Enemy(120, 50, 16, 6, 9, RandomElementalType());
         }
 
         [ContextMenu("IncreaseTurn")]
@@ -151,7 +151,7 @@ namespace SpellCombat {
         #region Public methods
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.StartCombatPhaseEvent += SetPlayerAndEnemyData;
+            //EventObserver.StartCombatPhaseEvent += SetPlayerAndEnemyData;
             EventObserver.StartTurnPhaseEvent += IncreaseTurn;
             EventObserver.StartTurnPhaseEvent += DecreaseTurnToWaitToModifyTheProbability;
             EventObserver.StartTurnPhaseEvent += DefineProbability;
@@ -160,7 +160,7 @@ namespace SpellCombat {
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.StartCombatPhaseEvent -= SetPlayerAndEnemyData;
+            //EventObserver.StartCombatPhaseEvent -= SetPlayerAndEnemyData;
             EventObserver.StartTurnPhaseEvent -= IncreaseTurn;
             EventObserver.StartTurnPhaseEvent -= DecreaseTurnToWaitToModifyTheProbability;
             EventObserver.StartTurnPhaseEvent -= DefineProbability;
